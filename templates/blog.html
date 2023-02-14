@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/bootstrap-5.0.2-dist/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/blog.css'%}">
+    <title>Blog</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row navbar">
+            <div class="col-12 col-md-6 col-sm-6 navbar-icon"><a href="{% url 'home' %}">Azimjon's Blog</a></div>
+            <div class="col-12 col-md-6 col-sm-6 navbar-link">
+                <div><a href="{% url 'about' %}">About</a></div>
+                <div><a href="{% url 'blog' %}">Blog</a></div>
+            </div>
+        </div>
+        <div class="row blog">
+            <div class="col-12">
+                <h1>Blog</h1>
+            </div>
+        </div>
+        <div class="row main">
+            <div class="col-12 col-md-6 col-sm-6 main-card1">
+                {% for i in m %}
+                    <p>{{ i.sana.year }}</p>
+                    {% if i.sana.month == 1 %}
+                    <span>yanvar</span>
+                    {% elif i.sana.month == 2 %}
+                    <span>fevral</span>
+                    {% elif i.sana.month == 3 %}
+                        <span>mart</span>
+                    {% elif i.sana.month == 4 %}
+                        <span>aprel</span>
+                    {% elif i.sana.month == 5 %}
+                        <span>may</span>
+                    {% elif i.sana.month == 6 %}
+                        <span>Iyun</span>
+                    {% elif i.sana.month == 7 %}
+                        <span>Iyl</span>
+                    {% elif i.sana.month == 8 %}
+                        <span>Avgust</span>
+                    {% elif i.sana.month == 9 %}
+                        <span>Sentabr</span>
+                    {% elif i.sana.month == 10 %}
+                        <span>Oktyabr</span>
+                    {% elif i.sana.month == 11 %}
+                        <span>Noyabr</span>
+                    {% elif i.sana.month == 12 %}
+                        <span>Dekabr</span>
+                    {% endif %}
+                    <div class="main-card1-link">
+                        <h3><a href='{% url 'maqola' i.id %}'>{{ i.sarlavha }}</a></h3>
+                        <h6>{{ i.sana }}<h6> <h5>{{ i.maqola | slice:':100' }}</h5>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+            <div class="col-12 col-md-6 col-sm-6 main-card2">
+                <h4>NEWSLETTER</h4>
+                <p>Subscribe to <a href="#">@codialuz</a> telegram channel where I share interesting & useful stuff.</p>
+
+            </div>
+        </div>
+        <div class="row footer">
+            <p>© 2021 azimjon.com</p>
+        </div>
+    </div>
+</body>
+</html>

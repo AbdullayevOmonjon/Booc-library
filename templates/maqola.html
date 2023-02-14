@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/style/style.css'%}">
+    <link rel="stylesheet" href="{% static '/bootstrap-5.0.2-dist/css/bootstrap.css'%}">
+    <title>Maqola 1</title>
+</head>
+<body>
+    <div class="container">
+        {% for i in m1 %}
+            <h1>
+                {{ i.sana.year }}
+                {% if i.sana.month == 1 %}
+                    <span>yanvar</span>
+                {% elif i.sana.month == 2 %}
+                    <span>fevral</span>
+                {% elif i.sana.month == 3 %}
+                    <span>mart</span>
+                {% elif i.sana.month == 4 %}
+                    <span>aprel</span>
+                {% elif i.sana.month == 5 %}
+                    <span>may</span>
+                {% elif i.sana.month == 6 %}
+                    <span>Iyun</span>
+                {% elif i.sana.month == 7 %}
+                    <span>Iyl</span>
+                {% elif i.sana.month == 8 %}
+                    <span>Avgust</span>
+                {% elif i.sana.month == 9 %}
+                    <span>Sentabr</span>
+                {% elif i.sana.month == 10 %}
+                    <span>Oktyabr</span>
+                {% elif i.sana.month == 11 %}
+                    <span>Noyabr</span>
+                {% elif i.sana.month == 12 %}
+                    <span>Dekabr</span>
+                {% endif %}
+            </h1>
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{i.rasm.url}}" alt="" stay="">
+                    <p>{{ i.maqola }}</p>
+                </div>
+            </div>
+            <div class="row footer">
+                <p>© {{ i.sana.year }} azimjon.com</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
